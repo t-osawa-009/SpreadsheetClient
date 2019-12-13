@@ -26,21 +26,10 @@ struct SpreadsheetRequest: APIRequest {
             throw APIError.missingKeyPath("entry")
         }
         
-        var titles = [String]()
-        entries.forEach { (entry) in
-            if let content = entry["content"] as? [String: Any], let _content = content["$t"] as? String {
-                titles.append(_content)
-            }
-        }
-        
-        var results: [String: String] = [:]
-        (0..<titles.count).forEach { (i) in
-            results[titles[i]] = titles[i + 1]
-        }
-        return results
+        return SpreadsheetResponse(entries: entries)
     }
     
-    typealias Response = [String: String]
+    typealias Response = SpreadsheetResponse
     private let id: String
     private let sheetNumber: Int
     init(id: String, sheetNumber: Int) {
@@ -49,3 +38,33 @@ struct SpreadsheetRequest: APIRequest {
     }
 }
 
+public struct SpreadsheetResponse {
+    public var entries: [[String: Any]] {
+        return _entries
+    }
+    private var _entries: [[String: Any]]
+    init(entries: [[String: Any]]) {
+        var _entries: [[String: Any]] = []
+        entries.forEach { (_dic) in
+            _dic.forEach { (key, value) in
+                let _key = key.replacingOccurrences(of: "gsx$", with: "")
+                if let _dic2 = value as? [String: Any],
+                    let result = _dic2["$t"] {
+                    _entries.append([_key: result])
+                }
+            }
+        }
+        self._entries = _entries
+    }
+    
+    public func fetch<T>(with key: String) -> [T] {
+        var result: [T] = []
+        _entries.forEach { (_dic) in
+            if let value = _dic[key] as? T {
+                result.append(value)
+            }
+        }
+        
+        return result
+    }
+}

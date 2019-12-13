@@ -6,7 +6,7 @@ public final class SpreadsheetClient {
     }
     
     @discardableResult
-    public func send(id: String, sheetNumber: Int, handler: @escaping (Swift.Result<[String: String], Error>) -> Void = { _ in }) -> URLSessionTask {
+    public func send(id: String, sheetNumber: Int, handler: @escaping (Swift.Result<SpreadsheetResponse, Error>) -> Void = { _ in }) -> URLSessionTask {
         let request = SpreadsheetRequest(id: id, sheetNumber: sheetNumber)
         let task = send(request) { (result) in
             switch result {
