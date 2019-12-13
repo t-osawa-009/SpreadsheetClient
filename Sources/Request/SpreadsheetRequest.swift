@@ -34,7 +34,7 @@ struct SpreadsheetRequest: APIRequest {
         }
         
         var results: [String: String] = [:]
-        (0...titles.count).forEach { (i) in
+        (0..<titles.count).forEach { (i) in
             results[titles[i]] = titles[i + 1]
         }
         return results
