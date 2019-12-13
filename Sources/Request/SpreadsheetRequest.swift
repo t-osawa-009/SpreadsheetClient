@@ -1,6 +1,6 @@
 import Foundation
 
-public struct SpreadsheetRequest: APIRequest {
+struct SpreadsheetRequest: APIRequest {
     var path: String {
         return "\(id)/\(sheetNumber.description)/public/values"
     }
@@ -43,7 +43,7 @@ public struct SpreadsheetRequest: APIRequest {
     typealias Response = [String: String]
     private let id: String
     private let sheetNumber: Int
-    public init(id: String, sheetNumber: Int) {
+    init(id: String, sheetNumber: Int) {
         self.id = id
         self.sheetNumber = sheetNumber
     }
