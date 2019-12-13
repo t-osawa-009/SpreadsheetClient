@@ -12,7 +12,23 @@
 		1741CDFB239A8BEE004A50CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1741CDF9239A8BEE004A50CA /* LaunchScreen.storyboard */; };
 		1741CE09239A8C57004A50CA /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1741CE08239A8C57004A50CA /* MainViewController.storyboard */; };
 		1741CE0B239A8C64004A50CA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741CE0A239A8C64004A50CA /* MainViewController.swift */; };
+		175C250D23A3C17E00F65D87 /* SpreadsheetClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 175C250C23A3C17E00F65D87 /* SpreadsheetClient.framework */; };
+		175C250E23A3C17E00F65D87 /* SpreadsheetClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 175C250C23A3C17E00F65D87 /* SpreadsheetClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		175C250F23A3C17E00F65D87 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				175C250E23A3C17E00F65D87 /* SpreadsheetClient.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1741CDEB239A8BEA004A50CA /* SpreadsheetClientExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpreadsheetClientExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,6 +38,7 @@
 		1741CDFC239A8BEE004A50CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1741CE08239A8C57004A50CA /* MainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainViewController.storyboard; sourceTree = "<group>"; };
 		1741CE0A239A8C64004A50CA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		175C250C23A3C17E00F65D87 /* SpreadsheetClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpreadsheetClient.framework; path = Carthage/Build/iOS/SpreadsheetClient.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				175C250D23A3C17E00F65D87 /* SpreadsheetClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +58,7 @@
 			children = (
 				1741CDED239A8BEA004A50CA /* SpreadsheetClientExample */,
 				1741CDEC239A8BEA004A50CA /* Products */,
+				175C250B23A3C17E00F65D87 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +83,14 @@
 			path = SpreadsheetClientExample;
 			sourceTree = "<group>";
 		};
+		175C250B23A3C17E00F65D87 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				175C250C23A3C17E00F65D87 /* SpreadsheetClient.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,6 +101,8 @@
 				1741CDE7239A8BEA004A50CA /* Sources */,
 				1741CDE8239A8BEA004A50CA /* Frameworks */,
 				1741CDE9239A8BEA004A50CA /* Resources */,
+				175C250F23A3C17E00F65D87 /* Embed Frameworks */,
+				175C251023A3C18700F65D87 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -129,6 +158,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		175C251023A3C18700F65D87 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SpreadsheetClient.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1741CDE7239A8BEA004A50CA /* Sources */ = {
@@ -275,6 +325,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZUBT77449H;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SpreadsheetClientExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -295,6 +349,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZUBT77449H;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SpreadsheetClientExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
