@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
   spec.license      = "MIT"
   spec.author       = { "t-osawa-009" => "da87435@gmail.com" }
   spec.source       = { :git => "https://github.com/t-osawa-009/SpreadsheetClient.git", :tag => "#{spec.version}" }
-  spec.source_files = "Sources/*.swift"
+  spec.source_files = "Sources/**/*.swift"
   spec.ios.deployment_target = "10.0"
   spec.tvos.deployment_target = "10.0"
   spec.osx.deployment_target = "10.12"
