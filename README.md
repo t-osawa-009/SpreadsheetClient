@@ -1,6 +1,8 @@
 # SpreadsheetClient
 Get the value of a Google spreadsheet file
 
+<img src="https://github.com/t-osawa-009/SpreadsheetClient/blob/master/assets/spreadsheet.png" alt="spreadsheet" title="spreadsheet">
+
 ```swift
 let client = SpreadsheetClient()
 client.send(id: "SPREADSHEET_ID", sheetNumber: 1) { (result) in
